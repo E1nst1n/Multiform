@@ -1,4 +1,9 @@
-import { sketches, sketchWidth, sketchHeight, createControl } from "../sketches";
+import {
+  sketches,
+  sketchWidth,
+  sketchHeight,
+  createControl,
+} from "../sketches";
 
 const smallEllipses = {
   name: "Small Ellipses",
@@ -25,14 +30,13 @@ const smallEllipses = {
         type: "range",
         min: 5,
         max: 30,
-        value: 10
-      })
+        value: 10,
+      });
 
-      element.addEventListener("input", function() {
+      element.addEventListener("input", function () {
         control.innerHTML = element.value;
-        ellipseSize = element.value
-      })
-    }
-  }
+        ellipseSize = element.value;
+      });
+    };
+  },
 };
-sketches.push(smallEllipses);
