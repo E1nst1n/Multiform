@@ -25,7 +25,6 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 30px;
-  position: fixed;
   top: 0;
   z-index: 1;
   background-color: #fff;
@@ -78,10 +77,13 @@ main {
 
 footer {
   display: flex;
-  margin-top: 80px;
   background-color: #000000;
-
   width: 100%;
+  position: absolute;
+  justify-content: center;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  bottom: 0;
 }
 
 /*Bouton Patterns*/
@@ -92,6 +94,9 @@ footer {
   justify-content: space-around;
   justify-content: space-evenly;
   padding: 2rem;
+  position: relative;
+  left: 25px;
+  top: 20px;
   width: 100%;
 }
 
@@ -137,6 +142,9 @@ footer {
 
 #drawing-canvas {
   border-radius: 50px;
+  position: relative;
+  left: 25px;
+  top: 25px;
 }
 
 #renderer {
@@ -154,13 +162,13 @@ footer {
   border-radius: 50px;
   text-align: center;
   width: 80px;
-  bottom: 6rem;
+  bottom: 4rem;
   right: 1rem;
 }
 
 #buy img {
-  width: 50px;
-  height: 50px;
+  width: 70%;
+  height: 70%;
   justify-content: center;
   justify-items: center;
 }
