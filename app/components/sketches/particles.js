@@ -13,6 +13,8 @@ const particles = {
 
     var particles = [];
 
+    let strokeValues;
+
     let noiseImg;
     sketch.setup = () => {
       let cnv = sketch.createCanvas(sketchWidth, sketchHeight);
@@ -23,7 +25,9 @@ const particles = {
       sketch.noiseDetail(1, 0);
       genNoiseImg();
       sketch.image(noiseImg, 0, 0);
-
+      setupResetControl();
+      strokeValues = sketch.setupStrokeControl();
+      sketch.stroke(hexToRgb(strokeValues));
       //initialize particle
       for (var i = 0; i < n; i++) {
         var particle = new Object();
@@ -71,10 +75,10 @@ const particles = {
       noiseImg.updatePixels();
     };
 
-    sketch.mousePressed = () => {
-      sketch.noiseSeed(sketch.random(0, 1000));
-      //sketch.noLoop();
-    };
+    //sketch.mousePressed = () => {
+    //sketch.noiseSeed(sketch.random(0, 1000));
+    //sketch.noLoop();
+    //};
 
     function genNoiseImg() {
       noiseImg = sketch.createGraphics(sketch.width, sketch.height);
@@ -105,11 +109,26 @@ const particles = {
       createControl(element, false, {
         class: "button",
       });
-      element.innerHTML = "Reset";
+      element.innerHTML = "Change attracting points";
 
       element.addEventListener("click", () => {
-        resetSketch();
+        sketch.noiseSeed(sketch.random(0, 1000));
       });
+    };
+
+    sketch.setupStrokeControl = () => {
+      let element = document.createElement("input");
+      let control = createControl(element, true, {
+        name: "Particle's color",
+        type: "color",
+        value: "#ffffff",
+      });
+      element.addEventListener("input", () => {
+        strokeValues = hexToRgb(element.value);
+        control.innerHTML = strokeValues;
+        sketch.stroke(strokeValues);
+      });
+      return element.value;
     };
   },
 };

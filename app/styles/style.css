@@ -24,47 +24,16 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 30px;
-  position: fixed;
+  width: 100%;
+  height: 80px;
   top: 0;
   z-index: 1;
   background-color: #fff;
-  align-items: center;
-  justify-content: space-between;
-  height: 75px;
-  width: 100%;
-  border-bottom: 1px solid #000000;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.Menu {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  margin: 20px;
-  display: flex;
-}
-.Menu div {
-  background-color: #000000;
-  margin: 5px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.Panier {
-  grid-column-start: 10;
-  grid-column-end: 11;
-  width: 30%;
-}
-
-.Coeur {
-  grid-column-start: 11;
-  grid-column-end: 12;
-  width: 30%;
-}
-
-.User {
-  grid-column-start: 12;
-  grid-column-end: 13;
-  width: 30%;
+header a {
+  padding-top: 15px;
 }
 
 main {
