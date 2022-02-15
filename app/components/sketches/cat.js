@@ -18,6 +18,5 @@ const cat = {
     sketch.draw = () => {
       sketch.image(img, sketch.mouseX, sketch.mouseY);
     };
-  }
+  },
 };
-sketches.push(cat);

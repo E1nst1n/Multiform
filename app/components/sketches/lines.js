@@ -2,7 +2,7 @@ import {
   sketches,
   sketchWidth,
   sketchHeight,
-  createControl
+  createControl,
 } from "../sketches";
 import { hexToRgb } from "../utils";
 
@@ -46,7 +46,7 @@ const lines = {
         type: "range",
         max: 40,
         min: 1,
-        value: 3
+        value: 3,
       });
 
       // // Listen to input changes and set readable value
@@ -69,7 +69,7 @@ const lines = {
         max: 4,
         min: 0,
         value: 1,
-        step: 0.1
+        step: 0.1,
       });
       element.addEventListener("input", () => {
         speedValue = parseFloat(element.value);
@@ -83,7 +83,7 @@ const lines = {
       let control = createControl(element, true, {
         name: "Background",
         type: "color",
-        value: "#000000"
+        value: "#000000",
       });
       element.addEventListener("input", () => {
         backgroundValues = hexToRgb(element.value);
@@ -98,7 +98,7 @@ const lines = {
       let control = createControl(element, true, {
         name: "Stroke",
         type: "color",
-        value: "#ffffff"
+        value: "#ffffff",
       });
       element.addEventListener("input", () => {
         strokeValues = hexToRgb(element.value);
@@ -107,6 +107,5 @@ const lines = {
       });
       return element.value;
     };
-  }
+  },
 };
-sketches.push(lines);
