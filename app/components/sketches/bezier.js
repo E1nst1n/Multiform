@@ -19,6 +19,7 @@ const bezier = {
       sketch.noFill();
       sketch.stroke(255);
       createSpeedControl();
+      setupStopControl();
     };
     sketch.draw = () => {
       sketch.background(0);
@@ -87,6 +88,24 @@ const bezier = {
     sketch.mouseReleased = () => {
       let _bezierGroup = new BezierGroup(sketch.mouseX, sketch.mouseY);
       groups.push(_bezierGroup);
+    };
+
+    const setupStopControl = () => {
+      let element = document.createElement("a");
+      createControl(element, false, {
+        class: "button",
+      });
+      element.innerHTML = "Play/Stop";
+
+      element.addEventListener("click", () => {
+        if (play == true) {
+          sketch.noLoop();
+          play = false;
+        } else {
+          sketch.loop();
+          play = true;
+        }
+      });
     };
   },
 };
