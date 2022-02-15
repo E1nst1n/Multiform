@@ -4,6 +4,7 @@ import {
   createControl,
   sketchHeight,
 } from "../sketches";
+import { hexToRgb } from "../utils";
 
 const particles = {
   name: "particles",
@@ -13,9 +14,10 @@ const particles = {
 
     var particles = [];
 
-    let strokeValues;
+    let backgroundValues, strokeValues;
 
     let noiseImg;
+
     sketch.setup = () => {
       let cnv = sketch.createCanvas(sketchWidth, sketchHeight);
       sketch.pixelDensity(2);
@@ -25,7 +27,11 @@ const particles = {
       sketch.noiseDetail(1, 0);
       genNoiseImg();
       sketch.image(noiseImg, 0, 0);
+
+      strokeValues = sketch.setupStrokeControl();
+      sketch.stroke(hexToRgb(strokeValues));
       setupResetControl();
+
       //initialize particle
       for (var i = 0; i < n; i++) {
         var particle = new Object();
@@ -64,7 +70,6 @@ const particles = {
 
       sketch.strokeWeight(1); //paticle size
       sketch.stroke(255);
-
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i]; //pick a particle
         p.pos.add(curl(p.pos.x / noiseScale, p.pos.y / noiseScale));
@@ -117,7 +122,7 @@ const particles = {
     sketch.setupStrokeControl = () => {
       let element = document.createElement("input");
       let control = createControl(element, true, {
-        name: "Particle's color",
+        name: "Stroke",
         type: "color",
         value: "#ffffff",
       });
