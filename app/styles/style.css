@@ -126,7 +126,25 @@ footer {
 }
 
 .option {
-  margin: 0;
+  justify-content: space-evenly;
+  justify-content: center;
+  justify-items: center;
+}
+
+.option .button {
+  background: white;
+  font-weight: 600;
+  padding: 5px;
+  color: #000000;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+input[type="color"] {
+  background-color: #000000;
+}
+
+input[type="range"] {
 }
 
 #buy {
