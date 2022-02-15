@@ -14,9 +14,11 @@ const particles = {
 
     var particles = [];
 
-    let backgroundValues, strokeValues;
+    let strokeValues, strokeweightValues;
 
     let noiseImg;
+
+    let play = true;
 
     sketch.setup = () => {
       let cnv = sketch.createCanvas(sketchWidth, sketchHeight);
@@ -28,9 +30,11 @@ const particles = {
       genNoiseImg();
       sketch.image(noiseImg, 0, 0);
 
+      strokeweightValues = sketch.setupStrokeweightControl();
       strokeValues = sketch.setupStrokeControl();
       sketch.stroke(hexToRgb(strokeValues));
       setupResetControl();
+      setupStopControl();
 
       //initialize particle
       for (var i = 0; i < n; i++) {
@@ -68,8 +72,8 @@ const particles = {
       sketch.tint(10, 10);
       sketch.image(noiseImg, 0, 0); //fill with transparent noise image
 
-      sketch.strokeWeight(1); //paticle size
-      sketch.stroke(255);
+      //sketch.strokeWeight(10); //paticle size
+      //sketch.stroke(255);
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i]; //pick a particle
         p.pos.add(curl(p.pos.x / noiseScale, p.pos.y / noiseScale));
@@ -77,11 +81,6 @@ const particles = {
       }
       noiseImg.updatePixels();
     };
-
-    //sketch.mousePressed = () => {
-    //sketch.noiseSeed(sketch.random(0, 1000));
-    //sketch.noLoop();
-    //};
 
     function genNoiseImg() {
       noiseImg = sketch.createGraphics(sketch.width, sketch.height);
@@ -132,6 +131,41 @@ const particles = {
         sketch.stroke(strokeValues);
       });
       return element.value;
+    };
+
+    sketch.setupStrokeweightControl = () => {
+      let element = document.createElement("input");
+      let control = createControl(element, true, {
+        name: "Stroke Weight",
+        type: "range",
+        max: 40,
+        min: 0.001,
+        value: 0.001,
+      });
+      element.addEventListener("input", () => {
+        strokeweightValues = sketch.strokeWeight(element.value);
+        control.innerHTML = strokeweightValues;
+        sketch.strokeWeight(strokeweightValues);
+      });
+      return element.value;
+    };
+
+    const setupStopControl = () => {
+      let element = document.createElement("a");
+      createControl(element, false, {
+        class: "button",
+      });
+      element.innerHTML = "Play/Stop";
+
+      element.addEventListener("click", () => {
+        if (play == true) {
+          sketch.noLoop();
+          play = false;
+        } else {
+          sketch.loop();
+          play = true;
+        }
+      });
     };
   },
 };
