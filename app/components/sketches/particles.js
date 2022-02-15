@@ -111,7 +111,7 @@ const particles = {
       createControl(element, false, {
         class: "button",
       });
-      element.innerHTML = "Change attracting points";
+      element.innerHTML = "Change direction";
 
       element.addEventListener("click", () => {
         sketch.noiseSeed(sketch.random(0, 1000));
@@ -121,7 +121,7 @@ const particles = {
     sketch.setupStrokeControl = () => {
       let element = document.createElement("input");
       let control = createControl(element, true, {
-        name: "Stroke",
+        name: "Particle's Color",
         type: "color",
         value: "#ffffff",
       });
@@ -138,12 +138,12 @@ const particles = {
       let control = createControl(element, true, {
         name: "Stroke Weight",
         type: "range",
-        max: 40,
-        min: 0.001,
-        value: 0.001,
+        max: 20,
+        min: 1,
+        value: 10,
       });
       element.addEventListener("input", () => {
-        strokeweightValues = sketch.strokeWeight(element.value);
+        strokeweightValues = element.value;
         control.innerHTML = strokeweightValues;
         sketch.strokeWeight(strokeweightValues);
       });
