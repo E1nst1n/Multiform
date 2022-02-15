@@ -1,7 +1,7 @@
 import { sketches, sketchWidth, sketchHeight, createControl } from "../sketches";
 
-const smallEllipses = {
-  name: "Small Ellipses",
+const RandomCircle = {
+  name: "Random Circle",
   sketch: (sketch) => {
     let ellipseSize = 10;
     sketch.setup = () => {
@@ -14,10 +14,25 @@ const smallEllipses = {
       sketch.background(40, 40, 40, 255);
     };
     sketch.draw = () => {
-      if (sketch.mouseIsPressed) {
-        sketch.ellipse(sketch.mouseX, sketch.mouseY, ellipseSize, ellipseSize);
-      }
-    };
+     
+
+function draw() {
+  if (mouseIsPressed){
+  stroke(255);
+  background(0);
+  noFill();
+  drawCircle(random(0,400), random(0,600), random(0,300));
+}
+}
+
+function drawCircle(x, y,d) {
+  ellipse (x,y,d);
+  if (d > 2) {
+    let newD = d * random (0.1, 1)
+    drawCircle( random(0,400),  random(0,600), newD);
+    drawCircle( random(0,400),  random(0,600), newD);
+  }
+}
     const createSizeControl = () => {
       const element = document.createElement("input");
       const control = createControl(element, true, {
@@ -26,13 +41,13 @@ const smallEllipses = {
         min: 5,
         max: 30,
         value: 10
-      })
+      });
 
       element.addEventListener("input", function() {
         control.innerHTML = element.value;
         ellipseSize = element.value
       })
     }
-  }
+  
 };
-sketches.push(smallEllipses);
+sketches.push(RandomCircle);
