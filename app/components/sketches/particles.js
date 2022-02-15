@@ -26,8 +26,6 @@ const particles = {
       genNoiseImg();
       sketch.image(noiseImg, 0, 0);
       setupResetControl();
-      strokeValues = sketch.setupStrokeControl();
-      sketch.stroke(hexToRgb(strokeValues));
       //initialize particle
       for (var i = 0; i < n; i++) {
         var particle = new Object();
