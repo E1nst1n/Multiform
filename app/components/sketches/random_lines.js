@@ -100,4 +100,3 @@ const randomLines = {
     };
   },
 };
-sketches.push(randomLines);

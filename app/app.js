@@ -5,6 +5,7 @@ import "./components/sketches/cat";
 import "./components/sketches/small_ellipses";
 import "./components/sketches/particles";
 import "./components/sketches/bezier";
+import "./components/sketches/random_circle";
 
 import { sketches, switchSketch } from "./components/sketches";
 import { init, setCanvasTexture } from "./components/renderer";

@@ -146,8 +146,20 @@ input[type="color"] {
   background-color: #000000;
 }
 
-input[type="range"] {
+#p5-switcher .switcher#particles {
+  background-image: url("../images/particles_thumb.png");
 }
+
+#p5-switcher .switcher#Bezier {
+  background-image: url("../images/bezier_thumb.png");
+}
+
+#p5-switcher .switcher#RCircle {
+  background-image: url("../images/randomcircle_thumb.png");
+}
+
+/*input[type="range"] {
+}*/
 
 #buy {
   padding: 1rem;

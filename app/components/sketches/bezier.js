@@ -45,6 +45,18 @@ const bezier = {
       });
     };
 
+    /*const setupResetControl = () => {
+      let element = document.createElement("a");
+      createControl(element, false, {
+        class: "button",
+      });
+      element.innerHTML = "Reset";
+
+      element.addEventListener("click", () => {
+        resetSketch();
+      });
+    };
+*/
     class BezierGroup {
       constructor(x, y) {
         this.x = x;
