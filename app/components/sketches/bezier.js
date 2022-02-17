@@ -17,24 +17,22 @@ const bezier = {
       cnv.id("drawing-canvas");
       cnv.class("control-target");
       sketch.background(0);
-      /*document
+      document
         .querySelector("#drawing-canvas")
         .addEventListener("mouseenter", () => (mouseIsInCanvas = true));
       document
         .querySelector("#drawing-canvas")
-        .addEventListener("mouseout", () => (mouseIsInCanvas = false));*/
+        .addEventListener("mouseout", () => (mouseIsInCanvas = false));
       sketch.noFill();
       sketch.stroke(255);
       createSpeedControl();
-      setupStopControl();
+      // setupStopControl();
     };
     sketch.draw = () => {
-      /* if (sketch.mousePressed && mouseIsInCanvas)*/ {
-        sketch.background(0);
-        for (let i = 0; i < groups.length; i++) {
-          groups[i].draw();
-          groups[i].update();
-        }
+      sketch.background(0);
+      for (let i = 0; i < groups.length; i++) {
+        groups[i].draw();
+        groups[i].update();
       }
     };
 
@@ -95,27 +93,29 @@ const bezier = {
       }
     }
     sketch.mouseReleased = () => {
-      let _bezierGroup = new BezierGroup(sketch.mouseX, sketch.mouseY);
-      groups.push(_bezierGroup);
+      if (sketch.mouseReleased && mouseIsInCanvas) {
+        let _bezierGroup = new BezierGroup(sketch.mouseX, sketch.mouseY);
+        groups.push(_bezierGroup);
+      }
     };
 
-    const setupStopControl = () => {
-      let element = document.createElement("a");
-      createControl(element, false, {
-        class: "button",
-      });
-      element.innerHTML = "Play/Stop";
+    // const setupStopControl = () => {
+    //   let element = document.createElement("a");
+    //   createControl(element, false, {
+    //     class: "button",
+    //   });
+    //   element.innerHTML = "Play/Stop";
 
-      element.addEventListener("click", () => {
-        if (play == true) {
-          sketch.noLoop();
-          play = false;
-        } else {
-          sketch.loop();
-          play = true;
-        }
-      });
-    };
+    //   element.addEventListener("click", () => {
+    //     if (play == true) {
+    //       sketch.noLoop();
+    //       play = false;
+    //     } else {
+    //       sketch.loop();
+    //       play = true;
+    //     }
+    //   });
+    // };
   },
 };
 sketches.push(bezier);
