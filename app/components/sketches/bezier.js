@@ -11,6 +11,7 @@ const bezier = {
     let mouseIsInCanvas = false;
     let groups = [];
     let speed = 10;
+    let play = true;
     sketch.setup = () => {
       let cnv = sketch.createCanvas(sketchWidth, sketchHeight);
       sketch.pixelDensity(2);
@@ -29,7 +30,7 @@ const bezier = {
       setupStopControl();
     };
     sketch.draw = () => {
-      /* if (sketch.mousePressed && mouseIsInCanvas)*/ {
+      /*if (sketch.mouseIsPressed && mouseIsInCanvas)*/ {
         sketch.background(0);
         for (let i = 0; i < groups.length; i++) {
           groups[i].draw();

@@ -150,18 +150,19 @@ input[type="color"] {
 
 #p5-switcher .switcher#particles {
   background-image: url("../images/particles_thumb.png");
+  cursor: pointer;
 }
 
 #p5-switcher .switcher#Bezier {
   background-image: url("../images/bezier_thumb.png");
+  justify-content: center;
+  cursor: pointer;
 }
 
 #p5-switcher .switcher#RandomCircle {
   background-image: url("../images/randomcircle_thumb.png");
+  cursor: pointer;
 }
-
-/*input[type="range"] {
-}*/
 
 #buy {
   padding: 1rem;
