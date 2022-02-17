@@ -145,6 +145,7 @@ footer {
 
 input[type="color"] {
   background-color: #000000;
+  border-radius: 5px;
 }
 
 #p5-switcher .switcher#particles {
