@@ -4,7 +4,6 @@ import {
   sketchHeight,
   createControl,
 } from "../sketches";
-/*import { hexToRgb } from "../utils";*/
 
 const randomcircle = {
   name: "Random Circle",
@@ -25,9 +24,8 @@ const randomcircle = {
       document
         .querySelector("#drawing-canvas")
         .addEventListener("mouseout", () => (mouseIsInCanvas = false));
-      setupResetControl();
-      createSizeControl();
       strokeweightValues = sketch.setupStrokeweightControl();
+      setupResetControl();
     };
 
     sketch.draw = () => {
@@ -54,11 +52,11 @@ const randomcircle = {
     sketch.setupStrokeweightControl = () => {
       let element = document.createElement("input");
       let control = createControl(element, true, {
-        name: "Stroke Weight",
+        name: "Circle Weight",
         type: "range",
-        max: 20,
+        max: 10,
         min: 1,
-        value: 5,
+        value: 1,
       });
       element.addEventListener("input", () => {
         strokeweightValues = element.value;
@@ -78,11 +76,18 @@ const randomcircle = {
       element.addEventListener("click", () => {
         resetSketch();
       });
+
       element.addEventListener("input", () => {
         control.innerHTML = element.value;
         quantity = element.value;
         resetSketch();
       });
+
+      const resetSketch = () => {
+        sketch.background(0);
+        lines = [];
+        createLines(quantity);
+      };
     };
   },
 };

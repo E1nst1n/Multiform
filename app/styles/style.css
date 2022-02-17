@@ -93,11 +93,11 @@ footer {
 #p5-controls {
   background: #000000;
   display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  position: absolute;
+  justify-content: space-evenly;
+  justify-items: center;
+  padding-bottom: 5px;
   bottom: 0;
-  gap: 3rem;
+  gap: 4rem;
 }
 
 #p5-controls > * {
@@ -127,6 +127,7 @@ footer {
 .option {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .option .button {
@@ -154,7 +155,7 @@ input[type="color"] {
   background-image: url("../images/bezier_thumb.png");
 }
 
-#p5-switcher .switcher#RCircle {
+#p5-switcher .switcher#RandomCircle {
   background-image: url("../images/randomcircle_thumb.png");
 }
 

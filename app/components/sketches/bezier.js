@@ -8,6 +8,7 @@ import {
 const bezier = {
   name: "Bezier",
   sketch: (sketch) => {
+    let mouseIsInCanvas = false;
     let groups = [];
     let speed = 10;
     sketch.setup = () => {
@@ -16,16 +17,24 @@ const bezier = {
       cnv.id("drawing-canvas");
       cnv.class("control-target");
       sketch.background(0);
+      /*document
+        .querySelector("#drawing-canvas")
+        .addEventListener("mouseenter", () => (mouseIsInCanvas = true));
+      document
+        .querySelector("#drawing-canvas")
+        .addEventListener("mouseout", () => (mouseIsInCanvas = false));*/
       sketch.noFill();
       sketch.stroke(255);
       createSpeedControl();
       setupStopControl();
     };
     sketch.draw = () => {
-      sketch.background(0);
-      for (let i = 0; i < groups.length; i++) {
-        groups[i].draw();
-        groups[i].update();
+      /* if (sketch.mousePressed && mouseIsInCanvas)*/ {
+        sketch.background(0);
+        for (let i = 0; i < groups.length; i++) {
+          groups[i].draw();
+          groups[i].update();
+        }
       }
     };
 
@@ -45,18 +54,6 @@ const bezier = {
       });
     };
 
-    /*const setupResetControl = () => {
-      let element = document.createElement("a");
-      createControl(element, false, {
-        class: "button",
-      });
-      element.innerHTML = "Reset";
-
-      element.addEventListener("click", () => {
-        resetSketch();
-      });
-    };
-*/
     class BezierGroup {
       constructor(x, y) {
         this.x = x;
